@@ -1,0 +1,91 @@
+#table {
+    border-collapse: collapse;
+      table-layout: fixed;
+    .MuiTableCell-body{
+        overflow: hidden;
+        white-space: nowrap;
+        -moz-text-overflow: ellipsis;        
+           -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+               text-overflow: ellipsis;    
+    }
+    .MuiTableCell-head {
+        border: 2px solid #ffffff;
+        .top_row {
+            background: #EEE;
+            /* padding: 0 4px; */
+            padding: 4px 12px;
+            font-size: 14px;
+            line-height: 1.42857;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            box-shadow: none;
+            justify-content: space-between;
+            display: flex;
+            // margin: 0 4px 0 0;
+            border-radius: unset !important;
+            overflow: hidden;
+            white-space: nowrap;
+            -moz-text-overflow: ellipsis;        
+               -ms-text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                   text-overflow: ellipsis;    
+    
+            .update_icon{
+                font-size: 1.1rem;
+                color: #219FD7;
+                cursor: pointer;
+            }
+        }
+    }
+    .MuiTableCell-body {
+        padding: 8px 12px;
+        border: none;
+        text-align: left !important;
+    }
+}
+#simple-modal-description{
+    label{
+        display: flex;
+        flex-direction: column;
+    }
+    .apply_btn_modal{
+        display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: none;
+    margin: 10px 0;
+    float: right;
+    }
+}
+table .MuiTableCell-body {
+        white-space: nowrap;
+    -moz-text-overflow: ellipsis;        
+       -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+}
+// table th {
+//         white-space: nowrap;
+//     -moz-text-overflow: ellipsis;        
+//        -ms-text-overflow: ellipsis;
+//         -o-text-overflow: ellipsis;
+//            text-overflow: ellipsis;
+// }
+

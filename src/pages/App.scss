@@ -1,0 +1,9 @@
+.MuiTableRow-root {
+    display: flex !important;
+}
+
+.MuiTableCell-head {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+}
