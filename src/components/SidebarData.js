@@ -31,7 +31,7 @@ export const SidebarData = [
   },
   {
     title: 'Datasets',
-    path: '/Datasets',
+    path: '/CreateDataset',
     icon: Dataset,
     cName: 'nav-text'
   },

@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
-import './Prepare.scss';
-import upload from '.././assets/dataset_upload_icon.svg';
-import twitter from '.././assets/dataset_twitter_icon.svg';
-import mongoDB from '.././assets/MongoDB_Logo.png';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import { DropzoneArea } from 'material-ui-dropzone';
-import MongoForm from '../components/MongoForm'
-import TwitterSource from '../components/TwitterSource'
-import CassendraPopup from '../components/CassendraPopup';
-import TwitterAuth from '../components/TwitterAuth';
+import React, { useState } from "react";
+import "./Prepare.scss";
+import upload from ".././assets/dataset_upload_icon.svg";
+import twitter from ".././assets/dataset_twitter_icon.svg";
+import mongoDB from ".././assets/MongoDB_Logo.png";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import { DropzoneArea } from "material-ui-dropzone";
+import MongoForm from "../components/MongoForm";
+// import TwitterSource from '../components/TwitterSource'
+import CassendraPopup from "../components/CassendraPopup";
+import TwitterAuth from "../components/TwitterAuth";
 
-function Prepare() {
-
+function Prepare(props) {
   const useStyles = makeStyles((theme) => ({
     modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      border: "2px solid #000",
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
-      width: '500px'
+      width: "500px",
     },
   }));
 
@@ -61,7 +60,7 @@ function Prepare() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-          <MongoForm />
+            <MongoForm />
           </div>
         </Fade>
       </Modal>
@@ -91,14 +90,14 @@ function Prepare() {
 
   function handleChange(files) {
     setFile({
-      files: files
+      files: files,
     });
   }
 
-
   return (
     <>
-      <Modal className="Modal_Pop"
+      <Modal
+        className="Modal_Pop"
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
@@ -107,19 +106,29 @@ function Prepare() {
         {body}
       </Modal>
 
-      <div className='prepare'>
+      <div className="prepare">
         <h2>Create a Dataset</h2>
         <h3>FROM NEW DATA SOURCES</h3>
 
         <div class="container">
           <main class="grid">
             <article>
-              <img className="uplaod" src={upload} alt="Sample photo" onChange={handleChange.bind(this)} />
+              <img
+                className="uplaod"
+                src={upload}
+                alt="Sample photo"
+                onChange={handleChange.bind(this)}
+              />
               <DropzoneArea
-                acceptedFiles={['image/*', 'video/*', 'application/*']}
+                acceptedFiles={["image/*", "video/*", "application/*"]}
                 onChange={handleChange.bind(this)}
                 showFileNames
-                dropzoneText={<div className="text"><h2>Upload a file</h2><p>(.csv, .tsv, .clf, .elf, .xlsx, .json)</p></div>}
+                dropzoneText={
+                  <div className="text">
+                    <h2>Upload a file</h2>
+                    <p>(.csv, .tsv, .clf, .elf, .xlsx, .json)</p>
+                  </div>
+                }
                 showAlerts={false}
                 filesLimit={20}
               />
@@ -136,7 +145,12 @@ function Prepare() {
               <div className="text">
                 {/* <h2>Twitter</h2> */}
                 {/* <h2><TwitterSource /></h2> */}
-                <h2><TwitterAuth /></h2>
+                <h2>
+                  <TwitterAuth
+                    setTableColumn={props.setTableColumn}
+                    setTableData={props.setTableData}
+                  />
+                </h2>
               </div>
             </article>
             <article onClick={handleOpen}>
@@ -145,13 +159,8 @@ function Prepare() {
                 <h2>MongoDB</h2>
               </div>
             </article>
-            {/* <article>
-              <img classname="twitter" src={twitter} alt="Sample photo" />
-              <div className="text">
-                <h2><CassendraPopup /></h2>
-              </div>
-            </article>
-            <article>
+
+            {/*<article>
               <img classname="twitter" src={twitter} alt="Sample photo" />
               <div className="text">
                 <h2>Twitter</h2>

@@ -1,30 +1,33 @@
-import axios from "axios"
+import axios from "axios";
 import { requestTwitterAuth } from "../actions/twitter";
 
-export const getTwitterInit_API = async () => {
-    let requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
+// const SERVER_URI =
+// "http://ec2-13-232-71-156.ap-south-1.compute.amazonaws.com:8080/connector/twitter";
+const SERVER_URI = "http://localhost:8080/connector/twitter";
 
-    return fetch("http://localhost:3001/connector/twitter/300/covid", requestOptions)
-        .then(response => response.text())
-        .then(result => { return { data: JSON.parse(result), status: 1, } })
-        .catch(error => {
-            console.log('error', error)
-            return { error, status: 0 }
-        });
-}
+export const getTwitterInit_API = async (limit, search) => {
+  let data = { authType: "oauth", authorize: true };
 
-// export const getDataList = async (callBackURL) => {
-//     return axios.post("http://localhost:3001/connector/twitter/300/covid", { authType: "oauth" }, {
-//         headers: {
-//             "Referer": callBackURL
-//         }
-//     })
-// }
+  let requestOptions = {
+    method: "POST",
+    redirect: "follow",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
 
-export const setCallbackURLDataAPI = (params) => {
-    axios.get(`http://localhost:3001/connector/twitter/callback${params}`)
-    return true
-}
+  return fetch(`${SERVER_URI}/${limit}/${search}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      return { data: JSON.parse(result), status: 1 };
+    })
+    .catch((error) => {
+      console.log("error", error);
+      return { error, status: 0 };
+    });
+};
+
+export const setCallbackURLDataAPI = async (params) => {
+  return axios.get(`http://localhost:8080/connector/twitter/callback${params}`);
+};
