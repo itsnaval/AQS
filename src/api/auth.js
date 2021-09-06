@@ -3,7 +3,7 @@ import { requestTwitterAuth } from "../actions/twitter";
 
 // const SERVER_URI =
 // "http://ec2-13-232-71-156.ap-south-1.compute.amazonaws.com:8080/connector/twitter";
-const SERVER_URI = "http://localhost:8080/connector/twitter";
+const SERVER_URI = "http://localhost:3001/connector/twitter";
 
 export const getTwitterInit_API = async (limit, search) => {
   let data = {
