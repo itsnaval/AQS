@@ -6,7 +6,12 @@ import { requestTwitterAuth } from "../actions/twitter";
 const SERVER_URI = "http://localhost:8080/connector/twitter";
 
 export const getTwitterInit_API = async (limit, search) => {
-  let data = { authType: "oauth", authorize: true };
+  let data = {
+    authType: "oauth",
+    dataSourceName: "test",
+    refresh: true,
+    userConsent: true,
+  };
 
   let requestOptions = {
     method: "POST",
